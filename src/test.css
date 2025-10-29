@@ -1,0 +1,6 @@
+/* Direct test to see if CSS loads at all */
+.test-class {
+  background-color: red;
+  color: white;
+  padding: 20px;
+}
