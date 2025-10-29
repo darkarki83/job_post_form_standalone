@@ -8,7 +8,10 @@ import FormInput from '../components/JobPostForm/FormInput';
 import FormSelect from '../components/JobPostForm/FormSelect';
 import FormRadioGroup from '../components/JobPostForm/FormRadioGroup';
 import FormCheckbox from '../components/JobPostForm/FormCheckbox';
+import EmailVerification from '../components/EmailVerification';
+import JobPostSuccess from '../components/JobPostSuccess';
 import { UK_COUNTRY_OPTIONS, UK_BUDGET_OPTIONS, UK_LEGAL_LINKS } from '../constants/regionConstants';
+import { UK_POSTCODE } from '../components/JobPostForm/formConstants';
 
 interface JobPostFormUKProps {
   onNavigate: (page: string) => void;
@@ -20,11 +23,61 @@ const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
     errors,
     photoFiles,
     alert,
+    showVerification,
+    isVerified,
+    isRemoteJob,
     handleChange,
     handlePhotoChange,
     removePhoto,
-    handleSubmit
-  } = useJobPostForm();
+    handleSubmit,
+    handleVerified,
+    handleCancelVerification,
+    resetForm,
+    fillMockData
+  } = useJobPostForm({
+    postcodePattern: UK_POSTCODE,
+    postcodeErrorMessage: 'Enter a valid UK postcode',
+    requirePostcode: true
+  });
+
+  // Mock data for UK form
+  const handleFillMockData = () => {
+    fillMockData({
+      trade: 'Plumber',
+      jobTitle: 'Fix leaking kitchen tap',
+      description: 'I have a leaking tap in my kitchen that needs urgent repair. The tap is dripping constantly and wasting water.',
+      firstName: 'John',
+      email: 'john.smith@example.com',
+      phone: '+447700900123',
+      country: 'England',
+      town: 'London',
+      postcode: 'SW1A 1AA',
+      budget: '250_500',
+      consent: true,
+      marketingOptIn: false
+    });
+  };
+
+  // Show success screen after verification
+  if (isVerified) {
+    return (
+      <JobPostSuccess
+        onPostAnother={resetForm}
+        onGoHome={() => onNavigate('home')}
+      />
+    );
+  }
+
+  // Show email verification screen
+  if (showVerification) {
+    return (
+      <EmailVerification
+        email={formData.email}
+        onVerified={handleVerified}
+        onCancel={handleCancelVerification}
+      />
+    );
+  }
 
   return (
     <div className="max-w-[980px] mx-auto px-5 py-7 pb-16">
@@ -52,7 +105,7 @@ const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
           <ContactSection formData={formData} errors={errors} handleChange={handleChange} />
 
           {/* Location - UK specific */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className={`grid grid-cols-1 ${isRemoteJob ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-4`}>
             <FormSelect
               label="Region"
               id="country"
@@ -64,21 +117,23 @@ const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
             <FormInput
               label="Town / City"
               id="town"
-              placeholder="e.g. London, Manchester"
+              placeholder={isRemoteJob ? "e.g. London (optional for remote)" : "e.g. London, Manchester"}
               value={formData.town}
               onChange={handleChange}
-              required
+              required={!isRemoteJob}
             />
-            <FormInput
-              label="Postcode"
-              id="postcode"
-              placeholder="e.g. SW1A 1AA"
-              value={formData.postcode}
-              onChange={handleChange}
-              error={errors.postcode}
-              required
-              helperText="UK postcode format"
-            />
+            {!isRemoteJob && (
+              <FormInput
+                label="Postcode"
+                id="postcode"
+                placeholder="e.g. SW1A 1AA"
+                value={formData.postcode}
+                onChange={handleChange}
+                error={errors.postcode}
+                required
+                helperText="UK postcode format"
+              />
+            )}
           </div>
 
           {/* Budget - GBP */}
@@ -157,16 +212,25 @@ const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
           </div>
 
           {/* Submit */}
-          <div className="flex items-center gap-4 flex-wrap mt-6">
-            <button
-              type="submit"
-              className="px-5 py-3 bg-gradient-to-b from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all active:translate-y-px shadow-md"
-            >
-              Post your job – get quotes
-            </button>
-            <p className="text-sm text-gray-600">
-              You'll receive up to 3 quotes from vetted UK tradespeople, usually within 24 hours.
-            </p>
+          <div className="space-y-4 mt-6">
+            <div className="flex items-center gap-4 flex-wrap">
+              <button
+                type="submit"
+                className="px-5 py-3 bg-gradient-to-b from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all active:translate-y-px shadow-md"
+              >
+                Post your job – get quotes
+              </button>
+              <button
+                type="button"
+                onClick={handleFillMockData}
+                className="px-5 py-3 bg-gradient-to-b from-amber-500 to-amber-600 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-amber-700 transition-all active:translate-y-px shadow-md"
+              >
+                🧪 Fill Test Data
+              </button>
+              <p className="text-sm text-gray-600">
+                You'll receive up to 3 quotes from vetted UK tradespeople, usually within 24 hours.
+              </p>
+            </div>
           </div>
 
           {/* Alert */}

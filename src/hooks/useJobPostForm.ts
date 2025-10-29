@@ -1,6 +1,12 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { UK_POSTCODE, E164, MAX_PHOTOS } from '../components/JobPostForm/formConstants';
+import { E164, MAX_PHOTOS } from '../components/JobPostForm/formConstants';
 import { FormData, FormErrors, Alert } from '../types';
+
+type ValidationConfig = {
+  postcodePattern?: RegExp;
+  postcodeErrorMessage?: string;
+  requirePostcode?: boolean;
+};
 
 const initialFormData: FormData = {
   trade: '',
@@ -15,14 +21,17 @@ const initialFormData: FormData = {
   budget: '',
   consent: false,
   marketingOptIn: false,
+  isRemoteJob: false,
   company: '' // honeypot
 };
 
-export const useJobPostForm = () => {
+export const useJobPostForm = (validationConfig?: ValidationConfig) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
   const [photoFiles, setPhotoFiles] = useState<File[]>([]);
   const [alert, setAlert] = useState<Alert>({ type: '', message: '' });
+  const [showVerification, setShowVerification] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const target = e.target as HTMLInputElement;
@@ -65,9 +74,16 @@ export const useJobPostForm = () => {
     if (!formData.jobTitle.trim() || formData.jobTitle.trim().length < 5) {
       newErrors.jobTitle = 'Enter a short job title (≥ 5 chars)';
     }
-    if (!formData.postcode.trim() || !UK_POSTCODE.test(formData.postcode.trim().toUpperCase())) {
-      newErrors.postcode = 'Enter a valid UK postcode';
+
+    // Validate postcode based on config (if not remote job)
+    if (!formData.isRemoteJob && (validationConfig?.requirePostcode !== false)) {
+      if (!formData.postcode.trim()) {
+        newErrors.postcode = validationConfig?.postcodeErrorMessage || 'Postcode is required';
+      } else if (validationConfig?.postcodePattern && !validationConfig.postcodePattern.test(formData.postcode.trim().toUpperCase())) {
+        newErrors.postcode = validationConfig.postcodeErrorMessage || 'Enter a valid postcode';
+      }
     }
+
     if (!formData.description.trim() || formData.description.trim().length < 30) {
       newErrors.description = 'Please describe the job (at least 30 characters)';
     }
@@ -88,7 +104,7 @@ export const useJobPostForm = () => {
     }
 
     // Honeypot check
-    if (formData.company && formData.company.length) {
+    if (formData.company?.length) {
       setAlert({ type: 'error', message: 'Spam detected.' });
       return false;
     }
@@ -108,24 +124,37 @@ export const useJobPostForm = () => {
 
     if (!validate()) return;
 
-    try {
-      // Demo: log the data instead of sending
-      console.log('Submitting payload… (demo)');
-      console.log('Form Data:', formData);
-      console.log('Photos:', photoFiles);
+    // Show email verification screen
+    setShowVerification(true);
+  };
 
-      setAlert({
-        type: 'ok',
-        message: 'Thanks! Your job has been posted. We\'ve notified local professionals.'
-      });
+  const handleVerified = () => {
+    setIsVerified(true);
+    setShowVerification(false);
 
-      // Reset form
-      setFormData(initialFormData);
-      setPhotoFiles([]);
-      setErrors({});
-    } catch (err) {
-      setAlert({ type: 'error', message: 'Something went wrong. Please try again.' });
-    }
+    // Log submission data
+    console.log('Submitting payload… (demo)');
+    console.log('Form Data:', formData);
+    console.log('Photos:', photoFiles);
+  };
+
+  const handleCancelVerification = () => {
+    setShowVerification(false);
+  };
+
+  const resetForm = () => {
+    setFormData(initialFormData);
+    setPhotoFiles([]);
+    setErrors({});
+    setAlert({ type: '', message: '' });
+    setShowVerification(false);
+    setIsVerified(false);
+  };
+
+  const fillMockData = (mockData: Partial<FormData>) => {
+    setFormData(prev => ({ ...prev, ...mockData }));
+    setErrors({});
+    setAlert({ type: '', message: '' });
   };
 
   return {
@@ -133,9 +162,16 @@ export const useJobPostForm = () => {
     errors,
     photoFiles,
     alert,
+    showVerification,
+    isVerified,
+    isRemoteJob: formData.isRemoteJob,
     handleChange,
     handlePhotoChange,
     removePhoto,
-    handleSubmit
+    handleSubmit,
+    handleVerified,
+    handleCancelVerification,
+    resetForm,
+    fillMockData
   };
 };

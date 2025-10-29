@@ -8,6 +8,8 @@ import FormInput from '../components/JobPostForm/FormInput';
 import FormSelect from '../components/JobPostForm/FormSelect';
 import FormRadioGroup from '../components/JobPostForm/FormRadioGroup';
 import FormCheckbox from '../components/JobPostForm/FormCheckbox';
+import EmailVerification from '../components/EmailVerification';
+import JobPostSuccess from '../components/JobPostSuccess';
 import { EU_COUNTRY_OPTIONS, EU_BUDGET_OPTIONS, EU_LEGAL_LINKS } from '../constants/regionConstants';
 
 interface JobPostFormEUProps {
@@ -20,11 +22,61 @@ const JobPostFormEU = ({ onNavigate }: JobPostFormEUProps) => {
     errors,
     photoFiles,
     alert,
+    showVerification,
+    isVerified,
+    isRemoteJob,
     handleChange,
     handlePhotoChange,
     removePhoto,
-    handleSubmit
-  } = useJobPostForm();
+    handleSubmit,
+    handleVerified,
+    handleCancelVerification,
+    resetForm,
+    fillMockData
+  } = useJobPostForm({
+    postcodePattern: /^[0-9]{4,5}$/,
+    postcodeErrorMessage: 'Enter a valid postcode',
+    requirePostcode: true
+  });
+
+  // Mock data for EU form
+  const handleFillMockData = () => {
+    fillMockData({
+      trade: 'Electrician',
+      jobTitle: 'Install new ceiling lights',
+      description: 'I need an electrician to install three new LED ceiling lights in my living room. Wiring is already in place.',
+      firstName: 'Marie',
+      email: 'marie.dubois@example.com',
+      phone: '+33612345678',
+      country: 'France',
+      town: 'Paris',
+      postcode: '75001',
+      budget: '500_1000',
+      consent: true,
+      marketingOptIn: false
+    });
+  };
+
+  // Show success screen after verification
+  if (isVerified) {
+    return (
+      <JobPostSuccess
+        onPostAnother={resetForm}
+        onGoHome={() => onNavigate('home')}
+      />
+    );
+  }
+
+  // Show email verification screen
+  if (showVerification) {
+    return (
+      <EmailVerification
+        email={formData.email}
+        onVerified={handleVerified}
+        onCancel={handleCancelVerification}
+      />
+    );
+  }
 
   return (
     <div className="max-w-[980px] mx-auto px-5 py-7 pb-16">
@@ -52,7 +104,7 @@ const JobPostFormEU = ({ onNavigate }: JobPostFormEUProps) => {
           <ContactSection formData={formData} errors={errors} handleChange={handleChange} />
 
           {/* Location - European specific */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className={`grid grid-cols-1 ${isRemoteJob ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-4`}>
             <FormSelect
               label="Country"
               id="country"
@@ -64,21 +116,23 @@ const JobPostFormEU = ({ onNavigate }: JobPostFormEUProps) => {
             <FormInput
               label="Town / City"
               id="town"
-              placeholder="e.g. Berlin, Paris, Madrid"
+              placeholder={isRemoteJob ? "e.g. Berlin (optional for remote)" : "e.g. Berlin, Paris, Madrid"}
               value={formData.town}
               onChange={handleChange}
-              required
+              required={!isRemoteJob}
             />
-            <FormInput
-              label="Postcode"
-              id="postcode"
-              placeholder="e.g. 10115, 75001"
-              value={formData.postcode}
-              onChange={handleChange}
-              error={errors.postcode}
-              required
-              helperText="Enter your local postcode format"
-            />
+            {!isRemoteJob && (
+              <FormInput
+                label="Postcode"
+                id="postcode"
+                placeholder="e.g. 10115, 75001"
+                value={formData.postcode}
+                onChange={handleChange}
+                error={errors.postcode}
+                required
+                helperText="Enter your local postcode format"
+              />
+            )}
           </div>
 
           {/* Budget - EUR */}
@@ -157,16 +211,25 @@ const JobPostFormEU = ({ onNavigate }: JobPostFormEUProps) => {
           </div>
 
           {/* Submit */}
-          <div className="flex items-center gap-4 flex-wrap mt-6">
-            <button
-              type="submit"
-              className="px-5 py-3 bg-gradient-to-b from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all active:translate-y-px shadow-md"
-            >
-              Post your job – get quotes
-            </button>
-            <p className="text-sm text-gray-600">
-              You'll receive up to 3 quotes from verified professionals within 24-48 hours.
-            </p>
+          <div className="space-y-4 mt-6">
+            <div className="flex items-center gap-4 flex-wrap">
+              <button
+                type="submit"
+                className="px-5 py-3 bg-gradient-to-b from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all active:translate-y-px shadow-md"
+              >
+                Post your job – get quotes
+              </button>
+              <button
+                type="button"
+                onClick={handleFillMockData}
+                className="px-5 py-3 bg-gradient-to-b from-amber-500 to-amber-600 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-amber-700 transition-all active:translate-y-px shadow-md"
+              >
+                🧪 Fill Test Data
+              </button>
+              <p className="text-sm text-gray-600">
+                You'll receive up to 3 quotes from verified professionals within 24-48 hours.
+              </p>
+            </div>
           </div>
 
           {/* Alert */}

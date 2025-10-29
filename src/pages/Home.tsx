@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Button from '../components/Button';
 
 interface HomeProps {
@@ -6,7 +5,6 @@ interface HomeProps {
 }
 
 const Home = ({ onNavigateToJobPost }: HomeProps) => {
-  const [count, setCount] = useState(0);
 
   return (
     <div className="px-8 py-12 max-w-7xl mx-auto">
@@ -42,16 +40,6 @@ const Home = ({ onNavigateToJobPost }: HomeProps) => {
         <div className="bg-white p-8 rounded-lg shadow-md hover:-translate-y-1 hover:shadow-xl transition-all">
           <h3 className="text-xl font-bold mb-3 text-gray-900">Trusted Professionals</h3>
           <p className="text-gray-600">Connect with verified tradespeople and service providers</p>
-        </div>
-      </section>
-
-      <section className="text-center py-12 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4 text-gray-900">Interactive Demo</h2>
-        <p className="text-2xl mb-6 text-gray-900">Click count: {count}</p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <Button onClick={() => setCount(count + 1)}>Increment</Button>
-          <Button variant="secondary" onClick={() => setCount(count - 1)}>Decrement</Button>
-          <Button variant="danger" onClick={() => setCount(0)}>Reset</Button>
         </div>
       </section>
     </div>

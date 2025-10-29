@@ -11,6 +11,7 @@ export interface FormData {
   budget: string;
   consent: boolean;
   marketingOptIn: boolean;
+  isRemoteJob: boolean;
   company: string; // honeypot
 }
 
