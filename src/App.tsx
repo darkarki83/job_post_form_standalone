@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import JobPostForm from './pages/JobPostForm';
+import JobPostFormUK from './pages/JobPostFormUK';
 import JobPostFormEU from './pages/JobPostFormEU';
 import JobPostFormUS from './pages/JobPostFormUS';
 
@@ -20,6 +21,8 @@ function App() {
         return <Home onNavigateToJobPost={handleNavigate} />;
       case 'job-post':
         return <JobPostForm />;
+      case 'job-post-uk':
+        return <JobPostFormUK />;
       case 'job-post-eu':
         return <JobPostFormEU />;
       case 'job-post-us':

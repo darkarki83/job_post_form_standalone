@@ -18,6 +18,9 @@ const Home = ({ onNavigateToJobPost }: HomeProps) => {
           Connect with professionals and get quotes for your projects
         </p>
         <div className="mt-8 flex gap-4 justify-center flex-wrap">
+          <Button onClick={() => onNavigateToJobPost('job-post-uk')}>
+            🇬🇧 Post a Job (UK)
+          </Button>
           <Button onClick={() => onNavigateToJobPost('job-post-eu')}>
             🇪🇺 Post a Job (Europe)
           </Button>

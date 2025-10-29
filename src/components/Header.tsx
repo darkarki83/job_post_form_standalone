@@ -14,7 +14,7 @@ const Header = ({ currentPage, onNavigate }: HeaderProps) => {
           Job Post Platform
         </button>
         <nav>
-          <ul className="flex gap-6 m-0 p-0 list-none">
+          <ul className="flex gap-4 m-0 p-0 list-none">
             <li>
               <a
                 href="#home"
@@ -33,8 +33,24 @@ const Header = ({ currentPage, onNavigate }: HeaderProps) => {
             </li>
             <li>
               <a
+                href="#job-post-uk"
+                className={`px-3 py-2 rounded-md transition-all flex items-center gap-1 ${
+                  currentPage === 'job-post-uk'
+                    ? 'text-blue-400 bg-blue-400/15 font-semibold'
+                    : 'text-white hover:text-blue-400 hover:bg-blue-400/10'
+                }`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('job-post-uk');
+                }}
+              >
+                <span>🇬🇧</span> UK
+              </a>
+            </li>
+            <li>
+              <a
                 href="#job-post-eu"
-                className={`px-4 py-2 rounded-md transition-all flex items-center gap-1 ${
+                className={`px-3 py-2 rounded-md transition-all flex items-center gap-1 ${
                   currentPage === 'job-post-eu'
                     ? 'text-blue-400 bg-blue-400/15 font-semibold'
                     : 'text-white hover:text-blue-400 hover:bg-blue-400/10'
@@ -44,13 +60,13 @@ const Header = ({ currentPage, onNavigate }: HeaderProps) => {
                   onNavigate('job-post-eu');
                 }}
               >
-                <span>🇪🇺</span> Post Job (EU)
+                <span>🇪🇺</span> EU
               </a>
             </li>
             <li>
               <a
                 href="#job-post-us"
-                className={`px-4 py-2 rounded-md transition-all flex items-center gap-1 ${
+                className={`px-3 py-2 rounded-md transition-all flex items-center gap-1 ${
                   currentPage === 'job-post-us'
                     ? 'text-blue-400 bg-blue-400/15 font-semibold'
                     : 'text-white hover:text-blue-400 hover:bg-blue-400/10'
@@ -60,7 +76,7 @@ const Header = ({ currentPage, onNavigate }: HeaderProps) => {
                   onNavigate('job-post-us');
                 }}
               >
-                <span>🇺🇸</span> Post Job (USA)
+                <span>🇺🇸</span> USA
               </a>
             </li>
           </ul>

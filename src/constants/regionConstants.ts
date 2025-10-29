@@ -1,8 +1,24 @@
 import { CountryOption, BudgetOption } from '../types';
 
+// United Kingdom Configuration
+export const UK_COUNTRY_OPTIONS: CountryOption[] = [
+  { value: 'GB-ENG', label: 'England' },
+  { value: 'GB-SCT', label: 'Scotland' },
+  { value: 'GB-WLS', label: 'Wales' },
+  { value: 'GB-NIR', label: 'Northern Ireland' }
+];
+
+export const UK_BUDGET_OPTIONS: BudgetOption[] = [
+  { value: 'not_sure', label: 'Not sure' },
+  { value: '0_250', label: '£0–£250' },
+  { value: '250_500', label: '£250–£500' },
+  { value: '500_1000', label: '£500–£1,000' },
+  { value: '1000_2500', label: '£1,000–£2,500' },
+  { value: '2500_plus', label: '£2,500+' }
+];
+
 // European Region Configuration
 export const EU_COUNTRY_OPTIONS: CountryOption[] = [
-  { value: 'GB', label: 'United Kingdom' },
   { value: 'DE', label: 'Germany' },
   { value: 'FR', label: 'France' },
   { value: 'IT', label: 'Italy' },
@@ -53,6 +69,13 @@ export const US_BUDGET_OPTIONS: BudgetOption[] = [
 ];
 
 // Regional Links and Legal Info
+export const UK_LEGAL_LINKS = {
+  terms: '/uk/terms',
+  privacy: '/uk/privacy',
+  dataNotice: 'We comply with UK GDPR and Data Protection Act 2018. Your information will only be shared with vetted UK tradespeople.',
+  footerText: 'UK GDPR compliant. Protected by reCAPTCHA. Right to data access and deletion available.'
+};
+
 export const EU_LEGAL_LINKS = {
   terms: '/eu/terms',
   privacy: '/eu/privacy',
@@ -69,6 +92,10 @@ export const US_LEGAL_LINKS = {
 
 // Validation patterns by region
 export const VALIDATION_PATTERNS = {
+  UK: {
+    postcode: /^(GIR 0AA|(?:(?:[A-PR-UWYZ][0-9]{1,2}|[A-PR-UWYZ][A-HK-Y][0-9]{1,2}|[A-PR-UWYZ][0-9][A-HJKPSTUW]|[A-PR-UWYZ][A-HK-Y][0-9][ABEHMNPRVWXY])\s?[0-9][ABD-HJLNP-UW-Z]{2}))$/i,
+    phone: /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/ // UK mobile
+  },
   EU: {
     postcode: /^[A-Z0-9\s-]{3,10}$/i, // Generic EU postcode pattern
     phone: /^\+?[1-9]\d{7,14}$/ // E.164 international format
