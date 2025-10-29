@@ -10,7 +10,11 @@ import FormRadioGroup from '../components/JobPostForm/FormRadioGroup';
 import FormCheckbox from '../components/JobPostForm/FormCheckbox';
 import { US_COUNTRY_OPTIONS, US_BUDGET_OPTIONS, US_LEGAL_LINKS } from '../constants/regionConstants';
 
-const JobPostFormUS = () => {
+interface JobPostFormUSProps {
+  onNavigate: (page: string) => void;
+}
+
+const JobPostFormUS = ({ onNavigate }: JobPostFormUSProps) => {
   const {
     formData,
     errors,
@@ -112,13 +116,21 @@ const JobPostFormUS = () => {
             error={errors.consent}
           >
             I agree to the{' '}
-            <a href={US_LEGAL_LINKS.terms} target="_blank" rel="noreferrer" className="text-blue-600 underline">
+            <button
+              type="button"
+              onClick={() => onNavigate('us/terms')}
+              className="text-blue-600 underline hover:text-blue-800"
+            >
               Terms of Service
-            </a>{' '}
+            </button>{' '}
             and{' '}
-            <a href={US_LEGAL_LINKS.privacy} target="_blank" rel="noreferrer" className="text-blue-600 underline">
+            <button
+              type="button"
+              onClick={() => onNavigate('us/privacy')}
+              className="text-blue-600 underline hover:text-blue-800"
+            >
               Privacy Policy
-            </a>
+            </button>
             . My information will be shared with qualified professionals to provide quotes.
           </FormCheckbox>
 

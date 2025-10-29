@@ -10,7 +10,11 @@ import FormRadioGroup from '../components/JobPostForm/FormRadioGroup';
 import FormCheckbox from '../components/JobPostForm/FormCheckbox';
 import { UK_COUNTRY_OPTIONS, UK_BUDGET_OPTIONS, UK_LEGAL_LINKS } from '../constants/regionConstants';
 
-const JobPostFormUK = () => {
+interface JobPostFormUKProps {
+  onNavigate: (page: string) => void;
+}
+
+const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
   const {
     formData,
     errors,
@@ -112,13 +116,21 @@ const JobPostFormUK = () => {
             error={errors.consent}
           >
             I agree to the{' '}
-            <a href={UK_LEGAL_LINKS.terms} target="_blank" rel="noreferrer" className="text-blue-600 underline">
+            <button
+              type="button"
+              onClick={() => onNavigate('uk/terms')}
+              className="text-blue-600 underline hover:text-blue-800"
+            >
               Terms & Conditions
-            </a>{' '}
+            </button>{' '}
             and{' '}
-            <a href={UK_LEGAL_LINKS.privacy} target="_blank" rel="noreferrer" className="text-blue-600 underline">
+            <button
+              type="button"
+              onClick={() => onNavigate('uk/privacy')}
+              className="text-blue-600 underline hover:text-blue-800"
+            >
               Privacy Policy (UK GDPR)
-            </a>
+            </button>
             . My details will only be shared with relevant UK tradespeople to provide quotes.
           </FormCheckbox>
 

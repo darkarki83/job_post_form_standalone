@@ -10,7 +10,11 @@ import FormRadioGroup from '../components/JobPostForm/FormRadioGroup';
 import FormCheckbox from '../components/JobPostForm/FormCheckbox';
 import { EU_COUNTRY_OPTIONS, EU_BUDGET_OPTIONS, EU_LEGAL_LINKS } from '../constants/regionConstants';
 
-const JobPostFormEU = () => {
+interface JobPostFormEUProps {
+  onNavigate: (page: string) => void;
+}
+
+const JobPostFormEU = ({ onNavigate }: JobPostFormEUProps) => {
   const {
     formData,
     errors,
@@ -112,13 +116,21 @@ const JobPostFormEU = () => {
             error={errors.consent}
           >
             I agree to the{' '}
-            <a href={EU_LEGAL_LINKS.terms} target="_blank" rel="noreferrer" className="text-blue-600 underline">
+            <button
+              type="button"
+              onClick={() => onNavigate('eu/terms')}
+              className="text-blue-600 underline hover:text-blue-800"
+            >
               Terms of Service
-            </a>{' '}
+            </button>{' '}
             and{' '}
-            <a href={EU_LEGAL_LINKS.privacy} target="_blank" rel="noreferrer" className="text-blue-600 underline">
+            <button
+              type="button"
+              onClick={() => onNavigate('eu/privacy')}
+              className="text-blue-600 underline hover:text-blue-800"
+            >
               Privacy Notice (GDPR)
-            </a>
+            </button>
             . I understand my data will only be shared with relevant professionals in my region.
           </FormCheckbox>
 
