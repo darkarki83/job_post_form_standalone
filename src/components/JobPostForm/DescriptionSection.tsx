@@ -1,6 +1,7 @@
 import FormTextarea from './FormTextarea';
+import { FormSectionProps } from '../../types';
 
-const DescriptionSection = ({ formData, errors, handleChange }) => {
+const DescriptionSection = ({ formData, errors, handleChange }: FormSectionProps) => {
   return (
     <FormTextarea
       label="Describe the job"

@@ -1,3 +1,5 @@
+import { FormRadioGroupProps } from '../../types';
+
 const FormRadioGroup = ({
   label,
   name,
@@ -6,7 +8,7 @@ const FormRadioGroup = ({
   onChange,
   error,
   required = false
-}) => {
+}: FormRadioGroupProps) => {
   return (
     <div className="mb-4">
       {label && (

@@ -1,8 +1,9 @@
 import FormSelect from './FormSelect';
 import FormInput from './FormInput';
 import { COUNTRY_OPTIONS } from './formConstants';
+import { FormSectionProps } from '../../types';
 
-const LocationSection = ({ formData, errors, handleChange }) => {
+const LocationSection = ({ formData, errors, handleChange }: FormSectionProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       <FormSelect

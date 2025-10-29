@@ -1,6 +1,7 @@
 import FormCheckbox from './FormCheckbox';
+import { FormSectionProps } from '../../types';
 
-const ConsentSection = ({ formData, errors, handleChange }) => {
+const ConsentSection = ({ formData, errors, handleChange }: FormSectionProps) => {
   return (
     <>
       <FormCheckbox

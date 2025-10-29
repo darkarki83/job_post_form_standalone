@@ -1,8 +1,10 @@
+import { CountryOption, BudgetOption } from '../../types';
+
 export const UK_POSTCODE = /^(GIR 0AA|(?:(?:[A-PR-UWYZ][0-9]{1,2}|[A-PR-UWYZ][A-HK-Y][0-9]{1,2}|[A-PR-UWYZ][0-9][A-HJKPSTUW]|[A-PR-UWYZ][A-HK-Y][0-9][ABEHMNPRVWXY])\s?[0-9][ABD-HJLNP-UW-Z]{2}))$/i;
 export const E164 = /^\+?[1-9]\d{7,14}$/;
 export const MAX_PHOTOS = 5;
 
-export const TRADE_OPTIONS = [
+export const TRADE_OPTIONS: string[] = [
   'Painters', 'Carpenters', 'Plumbers', 'Electricians', 'Builders', 'Roofers',
   'HVAC', 'Flooring', 'Tiling', 'Landscaping', 'Handyman',
   'Frontend Developer', 'Backend Developer', 'Full-Stack Developer',
@@ -16,7 +18,7 @@ export const TRADE_OPTIONS = [
   'Game Developer', 'Blockchain Developer', 'Embedded Engineer', 'Other…'
 ];
 
-export const COUNTRY_OPTIONS = [
+export const COUNTRY_OPTIONS: CountryOption[] = [
   { value: 'GB', label: 'United Kingdom' },
   { value: 'CA', label: 'Canada' },
   { value: 'US', label: 'United States' },
@@ -25,7 +27,7 @@ export const COUNTRY_OPTIONS = [
   { value: 'Other', label: 'Other' }
 ];
 
-export const BUDGET_OPTIONS = [
+export const BUDGET_OPTIONS: BudgetOption[] = [
   { value: 'not_sure', label: 'Not sure' },
   { value: '0_250', label: '£0–£250' },
   { value: '250_1000', label: '£250–£1,000' },

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import { UK_POSTCODE, E164, MAX_PHOTOS } from '../components/JobPostForm/formConstants';
+import { FormData, FormErrors, Alert } from '../types';
 
-const initialFormData = {
+const initialFormData: FormData = {
   trade: '',
   jobTitle: '',
   description: '',
@@ -18,26 +19,27 @@ const initialFormData = {
 };
 
 export const useJobPostForm = () => {
-  const [formData, setFormData] = useState(initialFormData);
-  const [errors, setErrors] = useState({});
-  const [photoFiles, setPhotoFiles] = useState([]);
-  const [alert, setAlert] = useState({ type: '', message: '' });
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [photoFiles, setPhotoFiles] = useState<File[]>([]);
+  const [alert, setAlert] = useState<Alert>({ type: '', message: '' });
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const target = e.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
-    if (errors[name]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
-  const handlePhotoChange = (e) => {
+  const handlePhotoChange = (e: ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     const existing = new Set(photoFiles.map(f => `${f.name}|${f.size}|${f.lastModified}`));
-    const newFiles = [];
+    const newFiles: File[] = [];
 
     for (const file of files) {
       if (photoFiles.length + newFiles.length >= MAX_PHOTOS) break;
@@ -50,12 +52,12 @@ export const useJobPostForm = () => {
     setPhotoFiles(prev => [...prev, ...newFiles]);
   };
 
-  const removePhoto = (index) => {
+  const removePhoto = (index: number) => {
     setPhotoFiles(prev => prev.filter((_, idx) => idx !== index));
   };
 
-  const validate = () => {
-    const newErrors = {};
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
 
     if (!formData.trade.trim()) {
       newErrors.trade = 'Please choose or type a trade';
@@ -100,7 +102,7 @@ export const useJobPostForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setAlert({ type: '', message: '' });
 

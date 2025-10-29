@@ -1,6 +1,7 @@
 import FormInput from './FormInput';
+import { FormSectionProps } from '../../types';
 
-const ContactSection = ({ formData, errors, handleChange }) => {
+const ContactSection = ({ formData, errors, handleChange }: FormSectionProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       <FormInput

@@ -3,11 +3,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import JobPostForm from './pages/JobPostForm';
+import JobPostFormEU from './pages/JobPostFormEU';
+import JobPostFormUS from './pages/JobPostFormUS';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState<string>('home');
 
-  const handleNavigate = (page) => {
+  const handleNavigate = (page: string) => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
@@ -15,11 +17,15 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <Home onNavigateToJobPost={() => handleNavigate('job-post')} />;
+        return <Home onNavigateToJobPost={handleNavigate} />;
       case 'job-post':
         return <JobPostForm />;
+      case 'job-post-eu':
+        return <JobPostFormEU />;
+      case 'job-post-us':
+        return <JobPostFormUS />;
       default:
-        return <Home onNavigateToJobPost={() => handleNavigate('job-post')} />;
+        return <Home onNavigateToJobPost={handleNavigate} />;
     }
   };
 

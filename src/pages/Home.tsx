@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import Button from '../components/Button';
 
-const Home = ({ onNavigateToJobPost }) => {
+interface HomeProps {
+  onNavigateToJobPost: (region: string) => void;
+}
+
+const Home = ({ onNavigateToJobPost }: HomeProps) => {
   const [count, setCount] = useState(0);
 
   return (
@@ -13,8 +17,13 @@ const Home = ({ onNavigateToJobPost }) => {
         <p className="text-xl text-gray-600 mb-8">
           Connect with professionals and get quotes for your projects
         </p>
-        <div className="mt-8">
-          <Button onClick={onNavigateToJobPost}>Post a Job Now</Button>
+        <div className="mt-8 flex gap-4 justify-center flex-wrap">
+          <Button onClick={() => onNavigateToJobPost('job-post-eu')}>
+            🇪🇺 Post a Job (Europe)
+          </Button>
+          <Button onClick={() => onNavigateToJobPost('job-post-us')}>
+            🇺🇸 Post a Job (USA)
+          </Button>
         </div>
       </section>
 

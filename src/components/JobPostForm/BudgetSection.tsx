@@ -1,7 +1,8 @@
 import FormRadioGroup from './FormRadioGroup';
 import { BUDGET_OPTIONS } from './formConstants';
+import { FormSectionProps } from '../../types';
 
-const BudgetSection = ({ formData, errors, handleChange }) => {
+const BudgetSection = ({ formData, errors, handleChange }: FormSectionProps) => {
   return (
     <FormRadioGroup
       label="Budget (rough)"

@@ -1,7 +1,8 @@
 import { useRef } from 'react';
+import { PhotoUploadProps } from '../../types';
 
-const PhotoUpload = ({ photos, onPhotosChange, onRemovePhoto, maxPhotos = 5 }) => {
-  const fileInputRef = useRef(null);
+const PhotoUpload = ({ photos, onPhotosChange, onRemovePhoto, maxPhotos = 5 }: PhotoUploadProps) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
     fileInputRef.current?.click();

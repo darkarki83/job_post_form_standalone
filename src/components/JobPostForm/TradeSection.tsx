@@ -1,7 +1,8 @@
 import FormInput from './FormInput';
 import { TRADE_OPTIONS } from './formConstants';
+import { FormSectionProps } from '../../types';
 
-const TradeSection = ({ formData, errors, handleChange }) => {
+const TradeSection = ({ formData, errors, handleChange }: FormSectionProps) => {
   return (
     <>
       <FormInput

@@ -1,3 +1,5 @@
+import { FormTextareaProps } from '../../types';
+
 const FormTextarea = ({
   label,
   id,
@@ -8,7 +10,7 @@ const FormTextarea = ({
   required = false,
   maxLength,
   showCounter = false
-}) => {
+}: FormTextareaProps) => {
   return (
     <div className="mb-4">
       <div className="flex justify-between items-center mb-2">
