@@ -6,6 +6,8 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout = ({ children, onNavigate }: AdminLayoutProps) => {
+  const currentPath = globalThis.location.hash || '#admin/job-posts';
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Admin Header */}
@@ -14,12 +16,26 @@ const AdminLayout = ({ children, onNavigate }: AdminLayoutProps) => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
               <h1 className="text-2xl font-bold text-gray-900">Admin Panel</h1>
-              <nav className="flex space-x-4">
+              <nav className="flex space-x-2">
                 <button
                   onClick={() => onNavigate('admin/job-posts')}
-                  className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md"
+                  className={`px-3 py-2 text-sm font-medium rounded-md ${
+                    currentPath.includes('job-posts')
+                      ? 'text-purple-700 bg-purple-100'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
                 >
                   Job Posts
+                </button>
+                <button
+                  onClick={() => onNavigate('admin/actions')}
+                  className={`px-3 py-2 text-sm font-medium rounded-md ${
+                    currentPath.includes('actions')
+                      ? 'text-purple-700 bg-purple-100'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                >
+                  Actions Log
                 </button>
               </nav>
             </div>

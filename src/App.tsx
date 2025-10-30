@@ -15,8 +15,10 @@ import USTerms from './pages/legal/USTerms';
 import USPrivacy from './pages/legal/USPrivacy';
 // Admin pages
 import AdminJobPosts from './pages/admin/AdminJobPosts';
+import AdminActionsLog from './pages/admin/AdminActionsLog';
 // Context providers
 import { JobPostProvider } from './contexts/JobPostContext';
+import { AdminActionsProvider } from './contexts/AdminActionsContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
@@ -56,21 +58,25 @@ function App() {
       // Admin pages
       case 'admin/job-posts':
         return <AdminJobPosts onNavigate={handleNavigate} />;
+      case 'admin/actions':
+        return <AdminActionsLog onNavigate={handleNavigate} />;
       default:
         return <Home onNavigateToJobPost={handleNavigate} />;
     }
   };
 
   return (
-    <JobPostProvider>
-      <div className="min-h-screen flex flex-col bg-gray-50">
-        <Header currentPage={currentPage} onNavigate={handleNavigate} />
-        <main className="flex-1">
-          {renderPage()}
-        </main>
-        <Footer />
-      </div>
-    </JobPostProvider>
+    <AdminActionsProvider>
+      <JobPostProvider>
+        <div className="min-h-screen flex flex-col bg-gray-50">
+          <Header currentPage={currentPage} onNavigate={handleNavigate} />
+          <main className="flex-1">
+            {renderPage()}
+          </main>
+          <Footer />
+        </div>
+      </JobPostProvider>
+    </AdminActionsProvider>
   );
 }
 

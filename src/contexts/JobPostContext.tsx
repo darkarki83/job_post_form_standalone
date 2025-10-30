@@ -1,14 +1,15 @@
-import { createContext, useContext, useState, useEffect, ReactNode, useMemo } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from 'react';
 import { JobPost } from '../types/JobPost';
 import mockJobPostsData from '../data/mockJobPosts.json';
+import { useAdminActions } from './AdminActionsContext';
 
 interface JobPostContextType {
   jobPosts: JobPost[];
   loading: boolean;
   error: string | null;
   getJobPostById: (id: string) => JobPost | undefined;
-  updateJobPostStatus: (id: string, status: JobPost['status']) => void;
-  deleteJobPost: (id: string) => void;
+  updateJobPostStatus: (id: string, status: JobPost['status'], reason?: string) => void;
+  deleteJobPost: (id: string, reason?: string) => void;
 }
 
 const JobPostContext = createContext<JobPostContextType | undefined>(undefined);
@@ -17,6 +18,7 @@ export const JobPostProvider = ({ children }: { children: ReactNode }) => {
   const [jobPosts, setJobPosts] = useState<JobPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { addAction } = useAdminActions();
 
   useEffect(() => {
     // Simulate API call with a small delay
@@ -38,21 +40,59 @@ export const JobPostProvider = ({ children }: { children: ReactNode }) => {
     fetchJobPosts();
   }, []);
 
-  const getJobPostById = (id: string): JobPost | undefined => {
+  const getJobPostById = useCallback((id: string): JobPost | undefined => {
     return jobPosts.find(post => post.id === id);
-  };
+  }, [jobPosts]);
 
-  const updateJobPostStatus = (id: string, status: JobPost['status']) => {
+  const updateJobPostStatus = useCallback((id: string, status: JobPost['status'], reason?: string) => {
+    const post = jobPosts.find(p => p.id === id);
+    if (!post) return;
+
+    const oldStatus = post.status;
+
     setJobPosts(prevPosts =>
-      prevPosts.map(post =>
-        post.id === id ? { ...post, status } : post
+      prevPosts.map(p =>
+        p.id === id ? { ...p, status } : p
       )
     );
-  };
 
-  const deleteJobPost = (id: string) => {
-    setJobPosts(prevPosts => prevPosts.filter(post => post.id !== id));
-  };
+    // Log admin action
+    addAction({
+      adminUserId: 'admin-001', // In real app, get from auth context
+      adminName: 'Admin User',
+      targetType: 'JobPost',
+      targetId: id,
+      targetTitle: post.title,
+      action: oldStatus === 'pending' && status === 'active' ? 'approved' : 'status_changed',
+      reason: reason || `Status changed from ${oldStatus} to ${status}`,
+      details: {
+        oldValue: oldStatus,
+        newValue: status,
+      },
+    });
+  }, [jobPosts, addAction]);
+
+  const deleteJobPost = useCallback((id: string, reason?: string) => {
+    const post = jobPosts.find(p => p.id === id);
+    if (!post) return;
+
+    setJobPosts(prevPosts => prevPosts.filter(p => p.id !== id));
+
+    // Log admin action
+    addAction({
+      adminUserId: 'admin-001', // In real app, get from auth context
+      adminName: 'Admin User',
+      targetType: 'JobPost',
+      targetId: id,
+      targetTitle: post.title,
+      action: 'deleted',
+      reason: reason || 'Job post deleted',
+      details: {
+        oldValue: post.status,
+        newValue: 'deleted',
+      },
+    });
+  }, [jobPosts, addAction]);
 
   const value: JobPostContextType = useMemo(() => ({
     jobPosts,

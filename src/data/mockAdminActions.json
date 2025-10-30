@@ -1,0 +1,107 @@
+[
+  {
+    "actionId": "action-001",
+    "adminUserId": "admin-001",
+    "adminName": "Admin User",
+    "targetType": "JobPost",
+    "targetId": "job-002",
+    "targetTitle": "Electrician for Rewiring Old House",
+    "action": "approved",
+    "reason": "Verified job post with valid contact details",
+    "details": {
+      "oldValue": "pending",
+      "newValue": "active"
+    },
+    "createdAt": "2025-10-27T14:25:00Z"
+  },
+  {
+    "actionId": "action-002",
+    "adminUserId": "admin-001",
+    "adminName": "Admin User",
+    "targetType": "JobPost",
+    "targetId": "job-001",
+    "targetTitle": "Plumber Needed for Bathroom Renovation",
+    "action": "status_changed",
+    "reason": "Updated status to pending for review",
+    "details": {
+      "oldValue": "draft",
+      "newValue": "pending"
+    },
+    "createdAt": "2025-10-28T09:15:00Z"
+  },
+  {
+    "actionId": "action-003",
+    "adminUserId": "admin-002",
+    "adminName": "Sarah Admin",
+    "targetType": "JobPost",
+    "targetId": "job-006",
+    "targetTitle": "Fake Roofing Job - SPAM",
+    "action": "deleted",
+    "reason": "Spam content detected - fake contact information",
+    "details": {
+      "oldValue": "pending",
+      "newValue": "deleted"
+    },
+    "createdAt": "2025-10-28T11:30:00Z"
+  },
+  {
+    "actionId": "action-004",
+    "adminUserId": "admin-001",
+    "adminName": "Admin User",
+    "targetType": "JobPost",
+    "targetId": "job-004",
+    "targetTitle": "Carpentry Work for Custom Cabinets",
+    "action": "status_changed",
+    "reason": "Job completed successfully",
+    "details": {
+      "oldValue": "active",
+      "newValue": "completed"
+    },
+    "createdAt": "2025-10-29T16:45:00Z"
+  },
+  {
+    "actionId": "action-005",
+    "adminUserId": "admin-002",
+    "adminName": "Sarah Admin",
+    "targetType": "JobPost",
+    "targetId": "job-007",
+    "targetTitle": "Emergency Plumbing - Duplicate Post",
+    "action": "rejected",
+    "reason": "Duplicate post - user already has active posting for same job",
+    "details": {
+      "oldValue": "pending",
+      "newValue": "rejected"
+    },
+    "createdAt": "2025-10-29T18:20:00Z"
+  },
+  {
+    "actionId": "action-006",
+    "adminUserId": "admin-001",
+    "adminName": "Admin User",
+    "targetType": "User",
+    "targetId": "user-123",
+    "targetTitle": "John Smith",
+    "action": "approved",
+    "reason": "Vendor verification completed - valid certifications",
+    "details": {
+      "oldValue": { "approved": false },
+      "newValue": { "approved": true }
+    },
+    "createdAt": "2025-10-30T08:00:00Z"
+  },
+  {
+    "actionId": "action-007",
+    "adminUserId": "admin-002",
+    "adminName": "Sarah Admin",
+    "targetType": "User",
+    "targetId": "user-456",
+    "targetTitle": "Suspicious User",
+    "action": "deleted",
+    "reason": "Fraudulent account - multiple spam posts",
+    "details": {
+      "oldValue": { "status": "active" },
+      "newValue": { "status": "deleted" }
+    },
+    "createdAt": "2025-10-30T10:15:00Z"
+  }
+]

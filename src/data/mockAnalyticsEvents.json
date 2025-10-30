@@ -1,0 +1,178 @@
+[
+  {
+    "eventId": "evt-001",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-abc123",
+    "requestId": "req-001",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "plumber-london-winter-2025",
+      "utm_term": "emergency plumber",
+      "utm_content": "ad-variant-a"
+    },
+    "referrer": "https://google.com/search?q=emergency+plumber+london",
+    "metadata": {
+      "source": "google",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.1.100"
+    },
+    "createdAt": "2025-10-28T10:15:00Z"
+  },
+  {
+    "eventId": "evt-002",
+    "eventType": "form_submit",
+    "postId": "job-001",
+    "userId": null,
+    "sessionId": "sess-abc123",
+    "requestId": "req-002",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "plumber-london-winter-2025",
+      "utm_term": "emergency plumber",
+      "utm_content": "ad-variant-a"
+    },
+    "referrer": "https://yoursite.com/uk/post-job",
+    "metadata": {
+      "source": "google",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.1.100"
+    },
+    "createdAt": "2025-10-28T10:22:00Z"
+  },
+  {
+    "eventId": "evt-003",
+    "eventType": "email_open",
+    "postId": "job-001",
+    "userId": null,
+    "sessionId": "sess-abc123",
+    "requestId": "req-003",
+    "utm": null,
+    "referrer": null,
+    "metadata": {
+      "source": "email",
+      "device": "mobile",
+      "browser": "Gmail App",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.1.100"
+    },
+    "createdAt": "2025-10-28T10:25:00Z"
+  },
+  {
+    "eventId": "evt-004",
+    "eventType": "email_verified",
+    "postId": "job-001",
+    "userId": null,
+    "sessionId": "sess-abc123",
+    "requestId": "req-004",
+    "utm": null,
+    "referrer": "https://yoursite.com/verify-email?token=xyz",
+    "metadata": {
+      "source": "email",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.1.100"
+    },
+    "createdAt": "2025-10-28T10:26:30Z"
+  },
+  {
+    "eventId": "evt-005",
+    "eventType": "post_approved",
+    "postId": "job-001",
+    "userId": null,
+    "sessionId": "admin-sess-001",
+    "requestId": "req-005",
+    "utm": null,
+    "referrer": null,
+    "metadata": {
+      "source": "admin",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "Windows",
+      "country": "UK",
+      "ip": "192.168.1.200"
+    },
+    "createdAt": "2025-10-28T14:30:00Z"
+  },
+  {
+    "eventId": "evt-006",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-xyz789",
+    "requestId": "req-006",
+    "utm": {
+      "utm_source": "facebook",
+      "utm_medium": "social",
+      "utm_campaign": "electrician-facebook-ads",
+      "utm_term": null,
+      "utm_content": "carousel-ad"
+    },
+    "referrer": "https://facebook.com",
+    "metadata": {
+      "source": "facebook",
+      "device": "desktop",
+      "browser": "Firefox",
+      "os": "MacOS",
+      "country": "UK",
+      "ip": "192.168.2.50"
+    },
+    "createdAt": "2025-10-27T16:45:00Z"
+  },
+  {
+    "eventId": "evt-007",
+    "eventType": "form_submit",
+    "postId": "job-002",
+    "userId": null,
+    "sessionId": "sess-xyz789",
+    "requestId": "req-007",
+    "utm": {
+      "utm_source": "facebook",
+      "utm_medium": "social",
+      "utm_campaign": "electrician-facebook-ads",
+      "utm_term": null,
+      "utm_content": "carousel-ad"
+    },
+    "referrer": "https://yoursite.com/uk/post-job",
+    "metadata": {
+      "source": "facebook",
+      "device": "desktop",
+      "browser": "Firefox",
+      "os": "MacOS",
+      "country": "UK",
+      "ip": "192.168.2.50"
+    },
+    "createdAt": "2025-10-27T16:52:00Z"
+  },
+  {
+    "eventId": "evt-008",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-def456",
+    "requestId": "req-008",
+    "utm": null,
+    "referrer": null,
+    "metadata": {
+      "source": "direct",
+      "device": "mobile",
+      "browser": "Safari",
+      "os": "iOS",
+      "country": "UK",
+      "ip": "192.168.3.75"
+    },
+    "createdAt": "2025-10-29T09:30:00Z"
+  }
+]
