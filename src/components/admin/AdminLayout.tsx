@@ -37,6 +37,16 @@ const AdminLayout = ({ children, onNavigate }: AdminLayoutProps) => {
                 >
                   Actions Log
                 </button>
+                <button
+                  onClick={() => onNavigate('admin/analytics')}
+                  className={`px-3 py-2 text-sm font-medium rounded-md ${
+                    currentPath.includes('analytics')
+                      ? 'text-purple-700 bg-purple-100'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                >
+                  Analytics
+                </button>
               </nav>
             </div>
             <button

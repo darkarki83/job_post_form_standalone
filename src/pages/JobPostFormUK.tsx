@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useJobPostForm } from '../hooks/useJobPostForm';
+import { useAnalyticsTracking } from '../hooks/useAnalyticsTracking';
 import TradeSection from '../components/JobPostForm/TradeSection';
 import DescriptionSection from '../components/JobPostForm/DescriptionSection';
 import ContactSection from '../components/JobPostForm/ContactSection';
@@ -18,6 +20,8 @@ interface JobPostFormUKProps {
 }
 
 const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
+  const { trackFormView, trackFormSubmit, trackEmailVerified } = useAnalyticsTracking();
+
   const {
     formData,
     errors,
@@ -30,7 +34,7 @@ const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
     handlePhotoChange,
     removePhoto,
     handleSubmit,
-    handleVerified,
+    handleVerified: originalHandleVerified,
     handleCancelVerification,
     resetForm,
     fillMockData
@@ -39,6 +43,26 @@ const JobPostFormUK = ({ onNavigate }: JobPostFormUKProps) => {
     postcodeErrorMessage: 'Enter a valid UK postcode',
     requirePostcode: true
   });
+
+  // Track form view when component mounts
+  useEffect(() => {
+    trackFormView('UK');
+  }, [trackFormView]);
+
+  // Wrap handleVerified to add analytics tracking
+  const handleVerified = () => {
+    // Generate a post ID (in real app, this would come from backend)
+    const postId = `job-uk-${Date.now()}`;
+
+    // Track form submission
+    trackFormSubmit(postId, 'UK');
+
+    // Track email verification (simulated - in real app this happens when user clicks email link)
+    trackEmailVerified(postId);
+
+    // Call original handler
+    originalHandleVerified();
+  };
 
   // Mock data for UK form
   const handleFillMockData = () => {

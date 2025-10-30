@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useJobPostForm } from '../hooks/useJobPostForm';
+import { useAnalyticsTracking } from '../hooks/useAnalyticsTracking';
 import TradeSection from '../components/JobPostForm/TradeSection';
 import DescriptionSection from '../components/JobPostForm/DescriptionSection';
 import ContactSection from '../components/JobPostForm/ContactSection';
@@ -17,6 +19,8 @@ interface JobPostFormUSProps {
 }
 
 const JobPostFormUS = ({ onNavigate }: JobPostFormUSProps) => {
+  const { trackFormView, trackFormSubmit, trackEmailVerified } = useAnalyticsTracking();
+
   const {
     formData,
     errors,
@@ -29,7 +33,7 @@ const JobPostFormUS = ({ onNavigate }: JobPostFormUSProps) => {
     handlePhotoChange,
     removePhoto,
     handleSubmit,
-    handleVerified,
+    handleVerified: originalHandleVerified,
     handleCancelVerification,
     resetForm,
     fillMockData
@@ -38,6 +42,26 @@ const JobPostFormUS = ({ onNavigate }: JobPostFormUSProps) => {
     postcodeErrorMessage: 'Enter a valid ZIP code (e.g. 12345 or 12345-6789)',
     requirePostcode: true
   });
+
+  // Track form view when component mounts
+  useEffect(() => {
+    trackFormView('US');
+  }, [trackFormView]);
+
+  // Wrap handleVerified to add analytics tracking
+  const handleVerified = () => {
+    // Generate a post ID (in real app, this would come from backend)
+    const postId = `job-us-${Date.now()}`;
+
+    // Track form submission
+    trackFormSubmit(postId, 'US');
+
+    // Track email verification
+    trackEmailVerified(postId);
+
+    // Call original handler
+    originalHandleVerified();
+  };
 
   // Mock data for US form
   const handleFillMockData = () => {

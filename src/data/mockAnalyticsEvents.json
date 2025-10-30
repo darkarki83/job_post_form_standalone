@@ -51,30 +51,11 @@
   },
   {
     "eventId": "evt-003",
-    "eventType": "email_open",
-    "postId": "job-001",
-    "userId": null,
-    "sessionId": "sess-abc123",
-    "requestId": "req-003",
-    "utm": null,
-    "referrer": null,
-    "metadata": {
-      "source": "email",
-      "device": "mobile",
-      "browser": "Gmail App",
-      "os": "Android",
-      "country": "UK",
-      "ip": "192.168.1.100"
-    },
-    "createdAt": "2025-10-28T10:25:00Z"
-  },
-  {
-    "eventId": "evt-004",
     "eventType": "email_verified",
     "postId": "job-001",
     "userId": null,
     "sessionId": "sess-abc123",
-    "requestId": "req-004",
+    "requestId": "req-003",
     "utm": null,
     "referrer": "https://yoursite.com/verify-email?token=xyz",
     "metadata": {
@@ -88,12 +69,12 @@
     "createdAt": "2025-10-28T10:26:30Z"
   },
   {
-    "eventId": "evt-005",
+    "eventId": "evt-004",
     "eventType": "post_approved",
     "postId": "job-001",
     "userId": null,
     "sessionId": "admin-sess-001",
-    "requestId": "req-005",
+    "requestId": "req-004",
     "utm": null,
     "referrer": null,
     "metadata": {
@@ -107,12 +88,12 @@
     "createdAt": "2025-10-28T14:30:00Z"
   },
   {
-    "eventId": "evt-006",
+    "eventId": "evt-005",
     "eventType": "form_view",
     "postId": null,
     "userId": null,
     "sessionId": "sess-xyz789",
-    "requestId": "req-006",
+    "requestId": "req-005",
     "utm": {
       "utm_source": "facebook",
       "utm_medium": "social",
@@ -132,12 +113,12 @@
     "createdAt": "2025-10-27T16:45:00Z"
   },
   {
-    "eventId": "evt-007",
+    "eventId": "evt-006",
     "eventType": "form_submit",
     "postId": "job-002",
     "userId": null,
     "sessionId": "sess-xyz789",
-    "requestId": "req-007",
+    "requestId": "req-006",
     "utm": {
       "utm_source": "facebook",
       "utm_medium": "social",
@@ -157,12 +138,50 @@
     "createdAt": "2025-10-27T16:52:00Z"
   },
   {
+    "eventId": "evt-007",
+    "eventType": "email_verified",
+    "postId": "job-002",
+    "userId": null,
+    "sessionId": "sess-xyz789",
+    "requestId": "req-007",
+    "utm": null,
+    "referrer": "https://yoursite.com/verify-email?token=abc",
+    "metadata": {
+      "source": "email",
+      "device": "desktop",
+      "browser": "Firefox",
+      "os": "MacOS",
+      "country": "UK",
+      "ip": "192.168.2.50"
+    },
+    "createdAt": "2025-10-27T17:05:00Z"
+  },
+  {
     "eventId": "evt-008",
+    "eventType": "post_approved",
+    "postId": "job-002",
+    "userId": null,
+    "sessionId": "admin-sess-001",
+    "requestId": "req-008",
+    "utm": null,
+    "referrer": null,
+    "metadata": {
+      "source": "admin",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "Windows",
+      "country": "UK",
+      "ip": "192.168.1.200"
+    },
+    "createdAt": "2025-10-27T18:20:00Z"
+  },
+  {
+    "eventId": "evt-009",
     "eventType": "form_view",
     "postId": null,
     "userId": null,
     "sessionId": "sess-def456",
-    "requestId": "req-008",
+    "requestId": "req-009",
     "utm": null,
     "referrer": null,
     "metadata": {
@@ -174,5 +193,375 @@
       "ip": "192.168.3.75"
     },
     "createdAt": "2025-10-29T09:30:00Z"
+  },
+  {
+    "eventId": "evt-010",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-ghi789",
+    "requestId": "req-010",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "plumber-london-winter-2025",
+      "utm_term": "plumber near me",
+      "utm_content": "ad-variant-b"
+    },
+    "referrer": "https://google.com/search?q=plumber+near+me",
+    "metadata": {
+      "source": "google",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "Windows",
+      "country": "UK",
+      "ip": "192.168.4.10"
+    },
+    "createdAt": "2025-10-29T11:00:00Z"
+  },
+  {
+    "eventId": "evt-011",
+    "eventType": "form_submit",
+    "postId": "job-003",
+    "userId": null,
+    "sessionId": "sess-ghi789",
+    "requestId": "req-011",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "plumber-london-winter-2025",
+      "utm_term": "plumber near me",
+      "utm_content": "ad-variant-b"
+    },
+    "referrer": "https://yoursite.com/uk/post-job",
+    "metadata": {
+      "source": "google",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "Windows",
+      "country": "UK",
+      "ip": "192.168.4.10"
+    },
+    "createdAt": "2025-10-29T11:15:00Z"
+  },
+  {
+    "eventId": "evt-012",
+    "eventType": "email_verified",
+    "postId": "job-003",
+    "userId": null,
+    "sessionId": "sess-ghi789",
+    "requestId": "req-012",
+    "utm": null,
+    "referrer": "https://yoursite.com/verify-email?token=def",
+    "metadata": {
+      "source": "email",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "Windows",
+      "country": "UK",
+      "ip": "192.168.4.10"
+    },
+    "createdAt": "2025-10-29T11:18:00Z"
+  },
+  {
+    "eventId": "evt-013",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-jkl012",
+    "requestId": "req-013",
+    "utm": {
+      "utm_source": "facebook",
+      "utm_medium": "social",
+      "utm_campaign": "carpenter-retargeting",
+      "utm_term": null,
+      "utm_content": "image-ad"
+    },
+    "referrer": "https://facebook.com",
+    "metadata": {
+      "source": "facebook",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.5.25"
+    },
+    "createdAt": "2025-10-29T13:45:00Z"
+  },
+  {
+    "eventId": "evt-014",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-mno345",
+    "requestId": "req-014",
+    "utm": {
+      "utm_source": "twitter",
+      "utm_medium": "social",
+      "utm_campaign": "general-awareness",
+      "utm_term": null,
+      "utm_content": "tweet"
+    },
+    "referrer": "https://twitter.com",
+    "metadata": {
+      "source": "twitter",
+      "device": "tablet",
+      "browser": "Safari",
+      "os": "iOS",
+      "country": "UK",
+      "ip": "192.168.6.30"
+    },
+    "createdAt": "2025-10-29T14:20:00Z"
+  },
+  {
+    "eventId": "evt-015",
+    "eventType": "form_submit",
+    "postId": "job-004",
+    "userId": null,
+    "sessionId": "sess-mno345",
+    "requestId": "req-015",
+    "utm": {
+      "utm_source": "twitter",
+      "utm_medium": "social",
+      "utm_campaign": "general-awareness",
+      "utm_term": null,
+      "utm_content": "tweet"
+    },
+    "referrer": "https://yoursite.com/uk/post-job",
+    "metadata": {
+      "source": "twitter",
+      "device": "tablet",
+      "browser": "Safari",
+      "os": "iOS",
+      "country": "UK",
+      "ip": "192.168.6.30"
+    },
+    "createdAt": "2025-10-29T14:35:00Z"
+  },
+  {
+    "eventId": "evt-016",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-pqr678",
+    "requestId": "req-016",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "electrician-manchester",
+      "utm_term": "electrician manchester",
+      "utm_content": "text-ad"
+    },
+    "referrer": "https://google.com/search?q=electrician+manchester",
+    "metadata": {
+      "source": "google",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.7.40"
+    },
+    "createdAt": "2025-10-29T15:10:00Z"
+  },
+  {
+    "eventId": "evt-017",
+    "eventType": "form_submit",
+    "postId": "job-005",
+    "userId": null,
+    "sessionId": "sess-pqr678",
+    "requestId": "req-017",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "electrician-manchester",
+      "utm_term": "electrician manchester",
+      "utm_content": "text-ad"
+    },
+    "referrer": "https://yoursite.com/uk/post-job",
+    "metadata": {
+      "source": "google",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.7.40"
+    },
+    "createdAt": "2025-10-29T15:22:00Z"
+  },
+  {
+    "eventId": "evt-018",
+    "eventType": "email_verified",
+    "postId": "job-005",
+    "userId": null,
+    "sessionId": "sess-pqr678",
+    "requestId": "req-018",
+    "utm": null,
+    "referrer": "https://yoursite.com/verify-email?token=ghi",
+    "metadata": {
+      "source": "email",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.7.40"
+    },
+    "createdAt": "2025-10-29T15:28:00Z"
+  },
+  {
+    "eventId": "evt-019",
+    "eventType": "post_approved",
+    "postId": "job-005",
+    "userId": null,
+    "sessionId": "admin-sess-002",
+    "requestId": "req-019",
+    "utm": null,
+    "referrer": null,
+    "metadata": {
+      "source": "admin",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "Windows",
+      "country": "UK",
+      "ip": "192.168.1.200"
+    },
+    "createdAt": "2025-10-29T16:00:00Z"
+  },
+  {
+    "eventId": "evt-020",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-stu901",
+    "requestId": "req-020",
+    "utm": null,
+    "referrer": "https://yoursite.com/blog/how-to-find-plumber",
+    "metadata": {
+      "source": "direct",
+      "device": "desktop",
+      "browser": "Edge",
+      "os": "Windows",
+      "country": "UK",
+      "ip": "192.168.8.50"
+    },
+    "createdAt": "2025-10-30T08:30:00Z"
+  },
+  {
+    "eventId": "evt-021",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-vwx234",
+    "requestId": "req-021",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "plumber-london-winter-2025",
+      "utm_term": "heating engineer",
+      "utm_content": "ad-variant-a"
+    },
+    "referrer": "https://google.com/search?q=heating+engineer+london",
+    "metadata": {
+      "source": "google",
+      "device": "mobile",
+      "browser": "Safari",
+      "os": "iOS",
+      "country": "UK",
+      "ip": "192.168.9.60"
+    },
+    "createdAt": "2025-10-30T09:15:00Z"
+  },
+  {
+    "eventId": "evt-022",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-yza567",
+    "requestId": "req-022",
+    "utm": {
+      "utm_source": "facebook",
+      "utm_medium": "social",
+      "utm_campaign": "electrician-facebook-ads",
+      "utm_term": null,
+      "utm_content": "video-ad"
+    },
+    "referrer": "https://facebook.com",
+    "metadata": {
+      "source": "facebook",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "MacOS",
+      "country": "UK",
+      "ip": "192.168.10.70"
+    },
+    "createdAt": "2025-10-30T10:00:00Z"
+  },
+  {
+    "eventId": "evt-023",
+    "eventType": "form_submit",
+    "postId": "job-006",
+    "userId": null,
+    "sessionId": "sess-yza567",
+    "requestId": "req-023",
+    "utm": {
+      "utm_source": "facebook",
+      "utm_medium": "social",
+      "utm_campaign": "electrician-facebook-ads",
+      "utm_term": null,
+      "utm_content": "video-ad"
+    },
+    "referrer": "https://yoursite.com/uk/post-job",
+    "metadata": {
+      "source": "facebook",
+      "device": "desktop",
+      "browser": "Chrome",
+      "os": "MacOS",
+      "country": "UK",
+      "ip": "192.168.10.70"
+    },
+    "createdAt": "2025-10-30T10:20:00Z"
+  },
+  {
+    "eventId": "evt-024",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-bcd890",
+    "requestId": "req-024",
+    "utm": null,
+    "referrer": null,
+    "metadata": {
+      "source": "direct",
+      "device": "tablet",
+      "browser": "Safari",
+      "os": "iOS",
+      "country": "UK",
+      "ip": "192.168.11.80"
+    },
+    "createdAt": "2025-10-30T11:30:00Z"
+  },
+  {
+    "eventId": "evt-025",
+    "eventType": "form_view",
+    "postId": null,
+    "userId": null,
+    "sessionId": "sess-efg123",
+    "requestId": "req-025",
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "electrician-manchester",
+      "utm_term": "emergency electrician",
+      "utm_content": "text-ad"
+    },
+    "referrer": "https://google.com/search?q=emergency+electrician",
+    "metadata": {
+      "source": "google",
+      "device": "mobile",
+      "browser": "Chrome",
+      "os": "Android",
+      "country": "UK",
+      "ip": "192.168.12.90"
+    },
+    "createdAt": "2025-10-30T12:45:00Z"
   }
 ]

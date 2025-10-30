@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useJobPosts } from '../../contexts/JobPostContext';
+import { useAnalyticsTracking } from '../../hooks/useAnalyticsTracking';
 import { JobPost } from '../../types/JobPost';
 import AdminLayout from '../../components/admin/AdminLayout';
 
@@ -9,6 +10,7 @@ interface AdminJobPostsProps {
 
 const AdminJobPosts = ({ onNavigate }: AdminJobPostsProps) => {
   const { jobPosts, loading, error, updateJobPostStatus, deleteJobPost } = useJobPosts();
+  const { trackPostApproved, trackPostDeleted } = useAnalyticsTracking();
   const [filter, setFilter] = useState<'all' | JobPost['status'] | 'unverified'>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -317,7 +319,10 @@ const AdminJobPosts = ({ onNavigate }: AdminJobPostsProps) => {
                           {post.status === 'pending' && (
                             post.verified ? (
                               <button
-                                onClick={() => updateJobPostStatus(post.id, 'active')}
+                                onClick={() => {
+                                  updateJobPostStatus(post.id, 'active');
+                                  trackPostApproved(post.id);
+                                }}
                                 className="text-green-600 hover:text-green-900 font-medium"
                               >
                                 Approve
@@ -349,6 +354,7 @@ const AdminJobPosts = ({ onNavigate }: AdminJobPostsProps) => {
                             onClick={() => {
                               if (globalThis.confirm('Are you sure you want to delete this job post?')) {
                                 deleteJobPost(post.id);
+                                trackPostDeleted(post.id);
                               }
                             }}
                             className="text-red-600 hover:text-red-900 font-medium"

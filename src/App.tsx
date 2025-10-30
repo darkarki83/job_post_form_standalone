@@ -16,9 +16,11 @@ import USPrivacy from './pages/legal/USPrivacy';
 // Admin pages
 import AdminJobPosts from './pages/admin/AdminJobPosts';
 import AdminActionsLog from './pages/admin/AdminActionsLog';
+import AdminAnalytics from './pages/admin/AdminAnalytics';
 // Context providers
 import { JobPostProvider } from './contexts/JobPostContext';
 import { AdminActionsProvider } from './contexts/AdminActionsContext';
+import { AnalyticsProvider } from './contexts/AnalyticsContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
@@ -60,23 +62,27 @@ function App() {
         return <AdminJobPosts onNavigate={handleNavigate} />;
       case 'admin/actions':
         return <AdminActionsLog onNavigate={handleNavigate} />;
+      case 'admin/analytics':
+        return <AdminAnalytics onNavigate={handleNavigate} />;
       default:
         return <Home onNavigateToJobPost={handleNavigate} />;
     }
   };
 
   return (
-    <AdminActionsProvider>
-      <JobPostProvider>
-        <div className="min-h-screen flex flex-col bg-gray-50">
-          <Header currentPage={currentPage} onNavigate={handleNavigate} />
-          <main className="flex-1">
-            {renderPage()}
-          </main>
-          <Footer />
-        </div>
-      </JobPostProvider>
-    </AdminActionsProvider>
+    <AnalyticsProvider>
+      <AdminActionsProvider>
+        <JobPostProvider>
+          <div className="min-h-screen flex flex-col bg-gray-50">
+            <Header currentPage={currentPage} onNavigate={handleNavigate} />
+            <main className="flex-1">
+              {renderPage()}
+            </main>
+            <Footer />
+          </div>
+        </JobPostProvider>
+      </AdminActionsProvider>
+    </AnalyticsProvider>
   );
 }
 
