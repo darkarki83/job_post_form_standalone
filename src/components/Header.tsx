@@ -79,6 +79,22 @@ const Header = ({ currentPage, onNavigate }: HeaderProps) => {
                 <span>🇺🇸</span> USA
               </a>
             </li>
+            <li className="ml-4 border-l border-gray-600 pl-4">
+              <a
+                href="#admin"
+                className={`px-4 py-2 rounded-md transition-all ${
+                  currentPage.startsWith('admin')
+                    ? 'text-purple-400 bg-purple-400/15 font-semibold'
+                    : 'text-white hover:text-purple-400 hover:bg-purple-400/10'
+                }`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('admin/job-posts');
+                }}
+              >
+                Admin
+              </a>
+            </li>
           </ul>
         </nav>
       </div>

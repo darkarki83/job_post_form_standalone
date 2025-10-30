@@ -1,0 +1,117 @@
+[
+  {
+    "id": "job-001",
+    "title": "Plumber Needed for Bathroom Renovation",
+    "description": "Looking for an experienced plumber to help with a complete bathroom renovation. Need to relocate pipes and install new fixtures including bathtub, shower, and sink.",
+    "trade": "Plumber",
+    "location": {
+      "city": "London",
+      "postcode": "SW1A 1AA"
+    },
+    "budget": {
+      "type": "fixed",
+      "amount": 2500,
+      "currency": "GBP"
+    },
+    "contact": {
+      "name": "John Smith",
+      "email": "john.smith@example.com",
+      "phone": "+44 20 7123 4567"
+    },
+    "status": "pending",
+    "createdAt": "2025-10-28T10:30:00Z",
+    "verified": true
+  },
+  {
+    "id": "job-002",
+    "title": "Electrician for Rewiring Old House",
+    "description": "Need a qualified electrician to rewire a Victorian house. The property has outdated wiring that needs to be completely replaced to meet current safety standards.",
+    "trade": "Electrician",
+    "location": {
+      "city": "Manchester",
+      "postcode": "M1 1AD"
+    },
+    "budget": {
+      "type": "hourly",
+      "amount": 45,
+      "currency": "GBP"
+    },
+    "contact": {
+      "name": "Sarah Johnson",
+      "email": "sarah.j@example.com",
+      "phone": "+44 161 123 4567"
+    },
+    "status": "active",
+    "createdAt": "2025-10-27T14:20:00Z",
+    "verified": true
+  },
+  {
+    "id": "job-003",
+    "title": "Kitchen Extension and Building Work",
+    "description": "Looking for a builder to extend our kitchen. Project includes knocking down a wall, building an extension, and installing new windows and doors.",
+    "trade": "Builder",
+    "location": {
+      "city": "Birmingham",
+      "postcode": "B1 1BB"
+    },
+    "budget": {
+      "type": "fixed",
+      "amount": 15000,
+      "currency": "GBP"
+    },
+    "contact": {
+      "name": "Michael Brown",
+      "email": "m.brown@example.com",
+      "phone": "+44 121 123 4567"
+    },
+    "status": "pending",
+    "createdAt": "2025-10-26T09:15:00Z",
+    "verified": false
+  },
+  {
+    "id": "job-004",
+    "title": "Carpentry Work for Custom Cabinets",
+    "description": "Seeking a skilled carpenter to build custom cabinets for home office. Need someone with experience in bespoke furniture and fine woodwork.",
+    "trade": "Carpenter",
+    "location": {
+      "city": "Leeds",
+      "postcode": "LS1 1BA"
+    },
+    "budget": {
+      "type": "fixed",
+      "amount": 3500,
+      "currency": "GBP"
+    },
+    "contact": {
+      "name": "Emma Wilson",
+      "email": "emma.wilson@example.com",
+      "phone": "+44 113 123 4567"
+    },
+    "status": "completed",
+    "createdAt": "2025-10-25T16:45:00Z",
+    "verified": true
+  },
+  {
+    "id": "job-005",
+    "title": "Roof Repair and Maintenance",
+    "description": "Need a roofer to fix leaking roof tiles and check overall roof condition. Some tiles are damaged and need replacement. Also need gutters cleaned.",
+    "trade": "Roofer",
+    "location": {
+      "city": "Bristol",
+      "postcode": "BS1 1AA"
+    },
+    "budget": {
+      "type": "hourly",
+      "amount": 35,
+      "currency": "GBP"
+    },
+    "contact": {
+      "name": "David Taylor",
+      "email": "d.taylor@example.com",
+      "phone": "+44 117 123 4567"
+    },
+    "status": "pending",
+    "createdAt": "2025-10-24T11:00:00Z",
+    "verified": false
+  }
+]

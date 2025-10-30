@@ -13,6 +13,10 @@ import EUTerms from './pages/legal/EUTerms';
 import EUPrivacy from './pages/legal/EUPrivacy';
 import USTerms from './pages/legal/USTerms';
 import USPrivacy from './pages/legal/USPrivacy';
+// Admin pages
+import AdminJobPosts from './pages/admin/AdminJobPosts';
+// Context providers
+import { JobPostProvider } from './contexts/JobPostContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
@@ -49,19 +53,24 @@ function App() {
         return <USTerms onNavigate={handleNavigate} />;
       case 'us/privacy':
         return <USPrivacy onNavigate={handleNavigate} />;
+      // Admin pages
+      case 'admin/job-posts':
+        return <AdminJobPosts onNavigate={handleNavigate} />;
       default:
         return <Home onNavigateToJobPost={handleNavigate} />;
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
-      <main className="flex-1">
-        {renderPage()}
-      </main>
-      <Footer />
-    </div>
+    <JobPostProvider>
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <Header currentPage={currentPage} onNavigate={handleNavigate} />
+        <main className="flex-1">
+          {renderPage()}
+        </main>
+        <Footer />
+      </div>
+    </JobPostProvider>
   );
 }
 
