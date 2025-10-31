@@ -28,6 +28,7 @@ This folder contains all project documentation.
 
 ## 🚀 Deployment Documentation
 
+- **[FIREBASE_RECOMMENDATION.md](FIREBASE_RECOMMENDATION.md)** - ⭐ **RECOMMENDED**: Firebase solution with costs & timeline
 - **[DEPLOYMENT_OPTIONS.md](DEPLOYMENT_OPTIONS.md)** - Deployment strategies (Custom vs Supabase)
 - **[REALISTIC_TIMELINE.md](REALISTIC_TIMELINE.md)** - Realistic deployment timeline
 
@@ -38,12 +39,14 @@ This folder contains all project documentation.
 2. Overview: [ANALYTICS_SUMMARY.md](ANALYTICS_SUMMARY.md)
 3. Technical: [ANALYTICS_IMPLEMENTATION.md](ANALYTICS_IMPLEMENTATION.md)
 4. Backend: [DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)
-5. Deploy: [DEPLOYMENT_OPTIONS.md](DEPLOYMENT_OPTIONS.md)
+5. Deploy: [FIREBASE_RECOMMENDATION.md](FIREBASE_RECOMMENDATION.md) ⭐ **Start Here**
+6. Compare: [DEPLOYMENT_OPTIONS.md](DEPLOYMENT_OPTIONS.md)
 
 ### For Product/Marketing:
 1. Start: [QUICK_START_ANALYTICS.md](QUICK_START_ANALYTICS.md)
 2. Dashboard: [ANALYTICS_DASHBOARD_PREVIEW.md](ANALYTICS_DASHBOARD_PREVIEW.md)
-3. Deployment: [REALISTIC_TIMELINE.md](REALISTIC_TIMELINE.md)
+3. Costs: [FIREBASE_RECOMMENDATION.md](FIREBASE_RECOMMENDATION.md) ⭐ **Read This**
+4. Timeline: [REALISTIC_TIMELINE.md](REALISTIC_TIMELINE.md)
 
 ### For Admin Users:
 1. Admin: [ADMIN_README.md](ADMIN_README.md)

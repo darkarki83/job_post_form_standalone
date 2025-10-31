@@ -131,11 +131,18 @@ Ready for MongoDB deployment with:
 
 ## 🚀 Deployment
 
-Two deployment options:
-1. **Custom Backend** - 3-4 weeks, full control
-2. **Supabase** - 10-14 days, faster launch
+### ⭐ Recommended: Firebase
+- **Cost**: $5-15/month ($60-180/year)
+- **Timeline**: 7-10 days
+- **Best for**: Fast launch, low cost, zero maintenance
 
-**See:** [docs/DEPLOYMENT_OPTIONS.md](docs/DEPLOYMENT_OPTIONS.md)
+**See:** [docs/FIREBASE_RECOMMENDATION.md](docs/FIREBASE_RECOMMENDATION.md)
+
+### Other Options:
+1. **Custom Backend** - 3-4 weeks, $60-100/month, full control
+2. **Supabase** - 10-14 days, $25-60/month, PostgreSQL
+
+**Compare:** [docs/DEPLOYMENT_OPTIONS.md](docs/DEPLOYMENT_OPTIONS.md)
 
 ## 📝 Next Steps
 
@@ -166,6 +173,6 @@ See project documentation for details.
 
 **Quick Links:**
 - [View Analytics](docs/QUICK_START_ANALYTICS.md)
+- [Firebase Recommendation](docs/FIREBASE_RECOMMENDATION.md) ⭐ **Deployment Guide**
 - [Database Schema](docs/DATABASE_SCHEMA.md)
-- [Deployment Guide](docs/DEPLOYMENT_OPTIONS.md)
 - [All Documentation](docs/README.md)
